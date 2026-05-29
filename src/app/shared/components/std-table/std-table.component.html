@@ -1,0 +1,39 @@
+<div class="card" *ngIf="getStdData.length > 0; else noStd">
+    <div class="card-body">
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>Sr.No.</th>
+                    <th>Full Name</th>
+                    <th>IsActive</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of getStdData; let i = index; trackBy: trackBystdId">
+                    <td>{{i+1}}</td>
+                    <td>{{std.fname}} {{std.lname}}</td>
+                    <td class="text-center"><mat-checkbox [checked]="std.isActive"></mat-checkbox></td>
+                    <td>{{std.email}}</td>
+                    <td>{{std.contact}}</td>
+                    <td>
+                        <button (click)="onEdit(std)" mat-raised-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                    </td>
+                    <td>
+                        <button (click)="onRemove(std.stdID)" mat-raised-button color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #noStd>
+    <p class="alert alert-info">No Student!!!</p>
+</ng-template>

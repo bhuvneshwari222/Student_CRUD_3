@@ -1,0 +1,60 @@
+<div class="card">
+    <div class="card-header">
+        <h1 class="m-0">{{isInEditMode ? 'Update Student' : 'Add Student'}}</h1>
+    </div>
+    <div class="card-body">
+        <form #stdForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="fname">First Name</label>
+                <input name="fname" required ngModel #fname="ngModel" type="text" class="form-control">
+                <strong *ngIf="(fname.touched || stdForm.submitted) && fname.invalid" class="text-danger">First Name is
+                    required
+                    field</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input name="lname" required ngModel #lname="ngModel" type="text" class="form-control">
+
+                <strong *ngIf="(lname.touched || stdForm.submitted) && lname.invalid" class="text-danger">Last Name is
+                    required
+                    field</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input name="email" required ngModel #email="ngModel" type="text" class="form-control">
+
+                <strong *ngIf="(email.touched || stdForm.submitted) && email.invalid" class="text-danger">Email is
+                    required
+                    field</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Contact</label>
+                <input name="contact" required ngModel #contact="ngModel" type="text" class="form-control">
+
+                <strong *ngIf="(contact.touched || stdForm.submitted) && contact.invalid" class="text-danger">Contact is
+                    required field</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="isActive">IsActive</label>
+                <select name="isActive" required ngModel #isActive="ngModel" type="text" class="form-control">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+
+                <strong *ngIf="(isActive.touched || stdForm.submitted) && isActive.invalid" class="text-danger">IsActive
+                    is
+                    required field</strong>
+            </div>
+
+            <button type="submit" class="w-100" *ngIf="!isInEditMode" mat-raised-button color="primary">Add
+                Student</button>
+            <button (click)="onUpdateStd()" type="button" class="w-100" *ngIf="isInEditMode" mat-raised-button
+                color="primary">Update Student</button>
+
+        </form>
+    </div>
+</div>
